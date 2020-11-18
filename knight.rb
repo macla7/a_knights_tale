@@ -53,11 +53,14 @@ class Board
   def adj()
   end
 
-  def knights_moves(get_to, spot = @knight.pos, queue = [], level_arr = [])
-    level_arr.push(spot)
+  i=0
+  def knights_moves(get_to, spot = @knight.pos, queue = [], pred = [], ron= [])
+    i+=1
     if spot == get_to
-      p level_arr
+      p pred
+      p round
     else
+      pred.push(spot)
       ne = move('ne', spot)
       en = move('en', spot)
       es = move('es', spot)
@@ -66,15 +69,15 @@ class Board
       ws = move('ws', spot)
       wn = move('wn', spot)
       nw = move('nw', spot)
-      queue.push(ne) unless ne.nil?
-      queue.push(en) unless en.nil?
-      queue.push(es) unless es.nil?
-      queue.push(se) unless se.nil?
-      queue.push(sw) unless sw.nil?
-      queue.push(ws) unless ws.nil?
-      queue.push(wn) unless wn.nil?
-      queue.push(nw) unless nw.nil?
-      knights_moves(get_to, queue.shift, queue, level_arr) unless queue.empty?
+      queue.push(ne) && ron.push(i) unless ne.nil?
+      queue.push(en) && ron.push(i) unless en.nil?
+      queue.push(es) && ron.push(i) unless es.nil?
+      queue.push(se) && ron.push(i) unless se.nil?
+      queue.push(sw) && ron.push(i) unless sw.nil?
+      queue.push(ws) && ron.push(i) unless ws.nil?
+      queue.push(wn) && ron.push(i) unless wn.nil?
+      queue.push(nw) && ron.push(i) unless nw.nil?
+      knights_moves(get_to, queue.shift, queue, pred, ron) unless queue.empty?
     end
   end
 
