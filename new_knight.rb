@@ -29,7 +29,6 @@ class Knight
     potential_shifts.each do |shift|
       potential_pos.push([pos[0] + shift[0], pos[1] + shift[1]])
     end
-    potential_pos
     moves = []
     potential_pos.each do |pos|
       moves.push(pos) if Chessboard.allowed? pos
@@ -71,7 +70,7 @@ class Path
     visited.push(Node.new(@start_pos))
 
     until @found
-      # checking for whether any of the new 'visited' node, are the end node. if not, they're added to the queue proper.
+      # checking for whether any of the new 'visited' nodes, are the end node. if not, they're added to the queue proper
       until visited.empty? || @found do
         if visited[0].pos == end_pos
           @found = true
