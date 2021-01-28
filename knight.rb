@@ -1,3 +1,7 @@
+# NOT IN USE. OLD FILE !!!
+# NOT IN USE. OLD FILE !!!
+# NOT IN USE. OLD FILE !!!
+
 class Knight
   attr_accessor :pos, :ne, :en, :es, :se, :sw, :ws, :wn, :nw
   def initialize(pos)
